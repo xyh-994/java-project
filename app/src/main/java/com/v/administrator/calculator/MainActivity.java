@@ -241,13 +241,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return (showContent.lastIndexOf("+")==showContent.length()-1||showContent.lastIndexOf("-")==showContent.length()-1||showContent.lastIndexOf("×")==showContent.length()-1||showContent.lastIndexOf("÷")==showContent.length()-1);
     }
     private  boolean getResult_(){
-        Double temp;
+        BigDecimal temp;
         int i=0,length=ls.size();
         while(i<length){
             if(ls.get(i).equals("×")){
                 BigDecimal b1=new BigDecimal(ls.get(i-1));
                 BigDecimal b2=new BigDecimal(ls.get(i+1));
-                temp=b1.multiply(b2).doubleValue();
+                temp=b1.multiply(b2);
                 ls.remove(i-1);
                 ls.remove(i-1);
                 ls.remove(i-1);
@@ -260,7 +260,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }else {
                     BigDecimal b1 = new BigDecimal(ls.get(i - 1));
                     BigDecimal b2 = new BigDecimal(ls.get(i + 1));
-                    temp = b1.divide(b2, 4, BigDecimal.ROUND_HALF_UP).doubleValue();
+                    temp = b1.divide(b2, 4, BigDecimal.ROUND_HALF_UP);
                     ls.remove(i - 1);
                     ls.remove(i - 1);
                     ls.remove(i - 1);
@@ -279,13 +279,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(!getResult_()){
             return false;
         }else{
-            Double temp;
+            BigDecimal temp;
             int i=0,length=ls.size();
             while(i<length){
                 if(ls.get(i).equals("+")){
                     BigDecimal b1=new BigDecimal(ls.get(i-1));
                     BigDecimal b2=new BigDecimal(ls.get(i+1));
-                    temp=b1.add(b2).doubleValue();
+                    temp=b1.add(b2);
                     ls.remove(i-1);
                     ls.remove(i-1);
                     ls.remove(i-1);
@@ -295,7 +295,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 else if(ls.get(i).equals("-")){
                     BigDecimal b1=new BigDecimal(ls.get(i-1));
                     BigDecimal b2=new BigDecimal(ls.get(i+1));
-                    temp=b1.subtract(b2).doubleValue();
+                    temp=b1.subtract(b2);
                     ls.remove(i-1);
                     ls.remove(i-1);
                     ls.remove(i-1);
